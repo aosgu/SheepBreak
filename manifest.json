@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "小羊起身提醒 · Sheep Break",
+  "short_name": "小羊提醒",
+  "version": "1.0.0",
+  "description": "每隔一段时间，一群小羊从页面八方跑进草地，提醒你起身活动。",
+  "permissions": ["alarms", "storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "小羊起身提醒",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}

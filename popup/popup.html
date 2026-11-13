@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 268px;
+      background: #f6f3eb;
+      color: #23301c;
+      font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+    }
+    .wrap { padding: 16px; }
+    h1 { margin: 0 0 2px; font-size: 15px; font-weight: 650; letter-spacing: .2px; }
+    .sub { margin: 0 0 14px; font-size: 11px; color: #7a8a6e; }
+    .row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; border-top: 1px solid #e3e6d8;
+    }
+    .row label { font-weight: 550; }
+    select {
+      font: inherit; color: #23301c; background: #fffdf7;
+      border: 1px solid #d6dcc6; border-radius: 8px;
+      padding: 5px 8px; outline: none; cursor: pointer;
+    }
+    .switch { position: relative; width: 40px; height: 22px; flex: none; }
+    .switch input { opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+    .track {
+      position: absolute; inset: 0; border-radius: 999px; background: #cfd6c0;
+      transition: background .18s; pointer-events: none;
+    }
+    .track::after {
+      content: ""; position: absolute; top: 3px; left: 3px;
+      width: 16px; height: 16px; border-radius: 50%; background: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,.18); transition: transform .18s;
+    }
+    .switch input:checked + .track { background: #65a30d; }
+    .switch input:checked + .track::after { transform: translateX(18px); }
+    .meta {
+      display: flex; justify-content: space-between;
+      font-size: 11px; color: #7a8a6e; padding: 10px 0 12px;
+      border-top: 1px solid #e3e6d8;
+    }
+    .meta b { color: #3d7821; font-weight: 600; }
+    .actions { display: flex; gap: 8px; }
+    button {
+      flex: 1; font: inherit; font-size: 12px; padding: 8px 6px;
+      border-radius: 9px; border: 1px solid #d6dcc6;
+      background: #fffdf7; color: #3d7821; cursor: pointer;
+      transition: background .15s, border-color .15s;
+    }
+    button:hover { background: #eef4e2; border-color: #b9c9a2; }
+    button:disabled { opacity: .45; cursor: default; }
+    .preview {
+      display: block; width: 100%; margin-top: 8px; padding: 6px;
+      font-size: 11px; color: #7a8a6e; background: none; border: none;
+    }
+    .preview:hover { background: none; color: #3d7821; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>小羊起身提醒</h1>
+    <p class="sub">羊群每隔一阵子来接你出去走走</p>
+
+    <div class="row">
+      <label for="toggle">启用提醒</label>
+      <span class="switch"><input id="toggle" type="checkbox" /><span class="track"></span></span>
+    </div>
+
+    <div class="row">
+      <label for="interval">提醒间隔</label>
+      <select id="interval">
+        <option value="15">15 分钟</option>
+        <option value="20">20 分钟</option>
+        <option value="30">30 分钟</option>
+        <option value="45">45 分钟</option>
+        <option value="60">60 分钟</option>
+      </select>
+    </div>
+
+    <div class="meta">
+      <span>状态：<b id="state">运行中</b></span>
+      <span>下次约 <b id="next">--:--</b></span>
+    </div>
+
+    <div class="actions">
+      <button id="pause">暂停 1 小时</button>
+    </div>
+    <button class="preview" id="preview">立即看一次</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
